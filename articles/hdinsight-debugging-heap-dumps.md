@@ -15,9 +15,11 @@ yarn: resourcemanager, nodemanager, timelineserver
 hdfs: datanode, secondarynamenode, namenode
 
 In order to turn on heap dumps the user needs to set a configuration for each service, under the corresponding section, that he would like to turn on heap dumps where <service> corresponds to the service he would like to turn on:
-1.	“javaargs.<service>. XX:+HeapDumpOnOutOfMemoryError” =
+
+1.	"javaargs.<service>. XX:+HeapDumpOnOutOfMemoryError" =
  "-XX:+HeapDumpOnOutOfMemoryError",
-2.	“javaargs.<service>.XX:HeapDumpPath” =
+
+2.	"javaargs.<service>.XX:HeapDumpPath" =
 "-XX:HeapDumpPath=c:\\Dumps\\<service>_%date:~4,2%_%date:~7,2%_%date:~10,2%_%time:~0,2%_%time:~3,2%_%time:~6,2%.hprof"  
 
 For example to turn on heap dumps for jobhistoryserver the user would do the following:
@@ -25,9 +27,7 @@ For example to turn on heap dumps for jobhistoryserver the user would do the fol
 **Using powershell sdk:**
 
 
-	mapredConfigvalues.Configuration = @{ "javaargs.jobhistoryserver.XX:+HeapDumpOnOutOfMemoryError” = 
-"-XX:+HeapDumpOnOutOfMemoryError", 
-	“javaargs.jobhistoryserver.XX:HeapDumpPath" = "-XX:HeapDumpPath=c:\\Dumps\\jobhistoryserver_%date:~4,2%_%date:~7,2%_%date:~10,2%_%time:~0,2%_%time:~3,2%_%time:~6,2%.hprof"  }
+	mapredConfigvalues.Configuration = @{ "javaargs.jobhistoryserver.XX:+HeapDumpOnOutOfMemoryError"  	="-XX:+HeapDumpOnOutOfMemoryError", "javaargs.jobhistoryserver.XX:HeapDumpPath" = 	"-XX:HeapDumpPath=c:\\Dumps\\jobhistoryserver_%date:~4,2%_%date:~7,2%_%date:~10,2%_%time:~0,2%_%time:~3,2%_%time:~6,2%.hprof"  }
 
 **Using c# sdk:**
 
